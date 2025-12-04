@@ -1,0 +1,226 @@
+.card-view {
+  position: relative;
+  width: 60px;
+  height: 90px;
+  border-radius: 8px;
+  border: 1px solid #4a5568;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow: hidden;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.card-view:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.7);
+}
+
+.card-view--red {
+  color: #e53e3e;
+}
+
+.card-view--black {
+  color: #1a202c;
+}
+
+/* Bigger version in overlay */
+.card-view--large {
+  width: 160px;
+  height: 240px;
+  border-radius: 14px;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.85);
+}
+
+/* Overlay */
+.card-view-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Corners – small card base sizes */
+.card-corner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  font-size: 9px;
+}
+
+.card-corner--top {
+  top: 4px;
+  left: 4px;
+}
+
+.card-corner--bottom {
+  bottom: 4px;
+  right: 4px;
+  transform: rotate(180deg);
+  transform-origin: center;
+}
+
+.card-rank {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.card-suit {
+  font-size: 7px;
+  margin-top: 1px;
+}
+
+/* Bigger corner text on expanded card */
+.card-view--large .card-corner {
+  font-size: 18px;
+}
+
+.card-view--large .card-suit {
+  font-size: 14px;
+}
+
+/* Pip layout */
+
+.card-pips {
+  position: absolute;
+  /* push pips down a bit so they don't crowd the rank/10 */
+  inset: 20px 8px;
+}
+
+/* small card pip sizing */
+.card-pip {
+  position: absolute;
+  font-size: 9px;
+  transform: translate(-50%, -50%);
+}
+
+/* larger pips in expanded view */
+.card-view--large .card-pip {
+  font-size: 20px;
+}
+
+/* Center */
+.card-pip--center {
+  top: 50%;
+  left: 50%;
+}
+
+/* Vertical centers – shifted away from corners a bit */
+.card-pip--top-center {
+  top: 20%;
+  left: 50%;
+}
+
+.card-pip--bottom-center {
+  top: 80%;
+  left: 50%;
+}
+
+/* Corners */
+.card-pip--top-left {
+  top: 22%;
+  left: 20%;
+}
+
+.card-pip--top-right {
+  top: 22%;
+  left: 80%;
+}
+
+.card-pip--bottom-left {
+  top: 78%;
+  left: 20%;
+}
+
+.card-pip--bottom-right {
+  top: 78%;
+  left: 80%;
+}
+
+/* Middle row */
+.card-pip--middle-left {
+  top: 50%;
+  left: 20%;
+}
+
+.card-pip--middle-right {
+  top: 50%;
+  left: 80%;
+}
+
+/* Upper / lower middle rows (for 10) */
+.card-pip--upper-middle-left {
+  top: 35%;
+  left: 20%;
+}
+
+.card-pip--upper-middle-right {
+  top: 35%;
+  left: 80%;
+}
+
+.card-pip--lower-middle-left {
+  top: 65%;
+  left: 20%;
+}
+
+.card-pip--lower-middle-right {
+  top: 65%;
+  left: 80%;
+}
+
+/* Face card styling */
+
+.card-face {
+  position: absolute;
+  inset: 18px 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.card-face--face-card {
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.8), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(148, 163, 184, 0.85), transparent 60%);
+}
+
+/* Small card face sizes */
+.card-face-rank {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.card-face-suit {
+  font-size: 14px;
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+/* Larger typography inside expanded face cards */
+.card-view--large .card-face {
+  inset: 26px 16px;
+}
+
+.card-view--large .card-face-rank {
+  font-size: 40px;
+}
+
+.card-view--large .card-face-suit {
+  font-size: 20px;
+}
+
