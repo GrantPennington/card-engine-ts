@@ -7,8 +7,11 @@ interface CardViewProps {
   card: Card;
   onClick?: () => void; // kept for compatibility, but not used in the click handler now
   draggable?: boolean;
-  onDragStart?: (e: React.DragEvent<HTMLDivElement>) => void; // 👈 add this
+  onDragStart?: (e: React.DragEvent<HTMLDivElement>) => void;
+  faceDown?: boolean;              // 👈 NEW
+  backImageSrc?: string;           // 👈 optional override
 }
+
 
 const getSuitSymbol = (rawSuit: string): string => {
   const map: Record<string, string> = {
@@ -127,7 +130,13 @@ const getPipSlots = (rankValue: number): PipSlot[] => {
   }
 };
 
-export const CardView: React.FC<CardViewProps> = ({ card, draggable, onDragStart }) => {
+export const CardView: React.FC<CardViewProps> = ({
+  card,
+  draggable,
+  onDragStart,
+  faceDown,
+  backImageSrc = "/cards/card_back_black.png"
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   const suitSymbol = getSuitSymbol(String(card.suit));
@@ -140,12 +149,28 @@ export const CardView: React.FC<CardViewProps> = ({ card, draggable, onDragStart
 
   const handleCardClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setExpanded(true); // only handles expansion now
+    setExpanded(true);
   };
 
   const closeExpanded = () => setExpanded(false);
 
   const cardClasses = `card-view ${colorClass}`;
+
+  if (faceDown) {
+    return (
+      <div
+        className={`${cardClasses} card-view--back`}
+        draggable={draggable}
+        onDragStart={onDragStart}
+      >
+        <img
+          src={backImageSrc}
+          alt="Card back"
+          className="card-view-back-image"
+        />
+      </div>
+    );
+  }
 
   const renderCardInner = () => (
     <>

@@ -1,23 +1,23 @@
 .card-view {
   position: relative;
-  width: 60px;
-  height: 90px;
-  border-radius: 8px;
+  width: 80px;             /* was 60 */
+  height: 120px;           /* was 90 */
+  border-radius: 10px;     /* slightly rounder */
   border: 1px solid #4a5568;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.6);
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.75);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   overflow: hidden;
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
 .card-view:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.85);
 }
 
 .card-view--red {
@@ -30,10 +30,10 @@
 
 /* Bigger version in overlay */
 .card-view--large {
-  width: 160px;
-  height: 240px;
-  border-radius: 14px;
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.85);
+  width: 200px;            /* was 160 */
+  height: 300px;           /* was 240 */
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.9);
 }
 
 /* Overlay */
@@ -47,65 +47,65 @@
   z-index: 999;
 }
 
-/* Corners – small card base sizes */
+/* Corners – base sizes (bigger) */
 .card-corner {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 1;
-  font-size: 9px;
+  font-size: 12px;       /* was 9 */
 }
 
 .card-corner--top {
-  top: 4px;
-  left: 4px;
+  top: 6px;              /* was 4 */
+  left: 6px;
 }
 
 .card-corner--bottom {
-  bottom: 4px;
-  right: 4px;
+  bottom: 6px;
+  right: 6px;
   transform: rotate(180deg);
   transform-origin: center;
 }
 
 .card-rank {
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em; /* slightly more spacing */
 }
 
 .card-suit {
-  font-size: 7px;
-  margin-top: 1px;
+  font-size: 10px;       /* was 7 */
+  margin-top: 2px;
 }
 
 /* Bigger corner text on expanded card */
 .card-view--large .card-corner {
-  font-size: 18px;
+  font-size: 22px;       /* was 18 */
 }
 
 .card-view--large .card-suit {
-  font-size: 14px;
+  font-size: 18px;       /* was 14 */
 }
 
 /* Pip layout */
 
 .card-pips {
   position: absolute;
-  /* push pips down a bit so they don't crowd the rank/10 */
-  inset: 20px 8px;
+  /* push pips down a bit so they don't crowd the rank */
+  inset: 26px 10px;      /* was 20px 8px */
 }
 
 /* small card pip sizing */
 .card-pip {
   position: absolute;
-  font-size: 9px;
+  font-size: 12px;       /* was 9 */
   transform: translate(-50%, -50%);
 }
 
 /* larger pips in expanded view */
 .card-view--large .card-pip {
-  font-size: 20px;
+  font-size: 24px;       /* was 20 */
 }
 
 /* Center */
@@ -114,7 +114,7 @@
   left: 50%;
 }
 
-/* Vertical centers – shifted away from corners a bit */
+/* Vertical centers */
 .card-pip--top-center {
   top: 20%;
   left: 50%;
@@ -128,62 +128,62 @@
 /* Corners */
 .card-pip--top-left {
   top: 22%;
-  left: 20%;
+  left: 22%;
 }
 
 .card-pip--top-right {
   top: 22%;
-  left: 80%;
+  left: 78%;
 }
 
 .card-pip--bottom-left {
   top: 78%;
-  left: 20%;
+  left: 22%;
 }
 
 .card-pip--bottom-right {
   top: 78%;
-  left: 80%;
+  left: 78%;
 }
 
 /* Middle row */
 .card-pip--middle-left {
   top: 50%;
-  left: 20%;
+  left: 22%;
 }
 
 .card-pip--middle-right {
   top: 50%;
-  left: 80%;
+  left: 78%;
 }
 
 /* Upper / lower middle rows (for 10) */
 .card-pip--upper-middle-left {
   top: 35%;
-  left: 20%;
+  left: 22%;
 }
 
 .card-pip--upper-middle-right {
   top: 35%;
-  left: 80%;
+  left: 78%;
 }
 
 .card-pip--lower-middle-left {
   top: 65%;
-  left: 20%;
+  left: 22%;
 }
 
 .card-pip--lower-middle-right {
   top: 65%;
-  left: 80%;
+  left: 78%;
 }
 
 /* Face card styling */
 
 .card-face {
   position: absolute;
-  inset: 18px 10px;
-  border-radius: 4px;
+  inset: 22px 12px;       /* slightly larger box */
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -194,33 +194,43 @@
 
 .card-face--face-card {
   background:
-    radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.8), transparent 60%),
-    radial-gradient(circle at 100% 100%, rgba(148, 163, 184, 0.85), transparent 60%);
+    radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.85), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(148, 163, 184, 0.9), transparent 60%);
 }
 
 /* Small card face sizes */
 .card-face-rank {
-  font-size: 22px;
+  font-size: 24px;      /* was 22 */
   font-weight: 800;
   letter-spacing: 0.08em;
 }
 
 .card-face-suit {
-  font-size: 14px;
+  font-size: 16px;      /* was 14 */
   margin-top: 4px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* Larger typography inside expanded face cards */
 .card-view--large .card-face {
-  inset: 26px 16px;
+  inset: 30px 18px;
 }
 
 .card-view--large .card-face-rank {
-  font-size: 40px;
+  font-size: 44px;      /* was 40 */
 }
 
 .card-view--large .card-face-suit {
-  font-size: 20px;
+  font-size: 24px;      /* was 20 */
 }
 
+.card-view--back {
+  padding: 0;
+}
+
+.card-view-back-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
