@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import BlackjackView from "./BlackjackView";
 import SandboxView from "./SandboxView";
 import SolitaireView from "./SolitaireView";
+import NertsView from "./NertsView";
 
-type Mode = "blackjack" | "sandbox" | "solitaire";
+type Mode = "blackjack" | "sandbox" | "solitaire" | "nerts";
 
 const App: React.FC = () => {
   const [mode, setMode] = useState<Mode>("blackjack");
@@ -69,6 +70,20 @@ const App: React.FC = () => {
             >
               Solitaire
             </button>
+            <button
+              onClick={() => setMode("nerts")}
+              style={{
+                padding: "0.4rem 0.8rem",
+                borderRadius: 6,
+                border: "none",
+                cursor: "pointer",
+                fontWeight: 500,
+                background: mode === "nerts" ? "#4c51bf" : "#1a202c",
+                color: "#edf2f7"
+              }}
+            >
+              Nerts
+            </button>
           </div>
         </header>
 
@@ -76,9 +91,11 @@ const App: React.FC = () => {
             <BlackjackView />
           ) : mode === "sandbox" ? (
             <SandboxView />
-          ) : (
+          ) : mode === "solitaire" ? (
             <SolitaireView />
-        )}
+          ) : (
+            <NertsView />
+          )}
       </div>
     </div>
   );
